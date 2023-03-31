@@ -11,7 +11,6 @@ To make script work you have to get your own client id and client secret from sp
 ^ use this command in cmd opened in folder where you cloned repository
 
 Then proceed with instructions:
-
     0. Clone the repository to a new folder. You will get an main.py file and .env file
     1. Go to: https://developer.spotify.com/dashboard/applications | Create an app using "Create an App" green button on the top right.
     2. Enter anything you want. It doesn't matter at all.
