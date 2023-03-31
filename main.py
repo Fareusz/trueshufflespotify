@@ -16,6 +16,20 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
 print(Fore.GREEN + "Welcome to Spotify Randomizer made by Fareusz#1337")
 print(Fore.RED + "Script will now fetch all songs from your liked songs... this may take a while")
 
+
+
+def playrandom(tracks):
+    random_track = random.choice(tracks)
+    track_uri = random_track["track"]["uri"]
+
+    sp.start_playback(uris=[track_uri])
+
+    print(Fore.GREEN + "Playing: " + random_track['track']['name'] + " by " + random_track['track']['artists'][0]['name'])
+
+def is_track_playing():
+    current_playback = sp.current_playback()
+    return current_playback and current_playback["is_playing"]
+
 def get_all_saved_tracks():
     all_tracks = []
     limit = 50
@@ -33,19 +47,6 @@ def get_all_saved_tracks():
         offset += limit
 
     return all_tracks
-
-
-def playrandom(tracks):
-    random_track = random.choice(tracks)
-    track_uri = random_track["track"]["uri"]
-
-    sp.start_playback(uris=[track_uri])
-
-    print(Fore.GREEN + "Playing: " + random_track['track']['name'] + " by " + random_track['track']['artists'][0]['name'])
-
-def is_track_playing():
-    current_playback = sp.current_playback()
-    return current_playback and current_playback["is_playing"]
 
 all_tracks = get_all_saved_tracks()
 playrandom(all_tracks)
